@@ -43,6 +43,14 @@ ul {
   color: #fff;
   background-color: var(--primary-color);
 }
+.btn-err {
+  color: #fff;
+  background-color: var(--primary-color);
+  /* width: 100%; */
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
 
 /* forms */
 label {
