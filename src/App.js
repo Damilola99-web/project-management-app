@@ -12,9 +12,10 @@ import Sidebar from './components/Sidebar';
 import ProtectedRoute from './pages/ProtectedRoute';
 import { ResrtictedRoute } from './pages/RestrictedRoute';
 import { useAuthContext } from './hooks/useAuthContext';
+import UsersList from './components/UsersList';
 
 function App() {
-	const {user} = useAuthContext()
+	const { user } = useAuthContext();
 	return (
 		<div className="App">
 			<Router>
@@ -65,6 +66,7 @@ function App() {
 						<Route path="*" element={<Missing />} />
 					</Routes>
 				</div>
+				{user && <UsersList />}
 			</Router>
 		</div>
 	);
