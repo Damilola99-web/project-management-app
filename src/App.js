@@ -9,20 +9,59 @@ import Signup from './pages/signup/Signup';
 import Login from './pages/login/Login';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import ProtectedRoute from './pages/ProtectedRoute';
+import { ResrtictedRoute } from './pages/RestrictedRoute';
+import { useAuthContext } from './hooks/useAuthContext';
 
 function App() {
+	const {user} = useAuthContext()
 	return (
 		<div className="App">
 			<Router>
-        <Sidebar />
+				{user && <Sidebar />}
 				<div className="container">
 					<Navbar />
 					<Routes>
-						<Route path="/" element={<Dashboard />} />
-						<Route path="/login" element={<Login />} />
-						<Route path="/signup" element={<Signup />} />
-						<Route path="/project" element={<Project />} />
-						<Route path="/create" element={<Create />} />
+						<Route
+							path="/"
+							element={
+								<ProtectedRoute>
+									<Dashboard />
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="/login"
+							element={
+								<ResrtictedRoute>
+									<Login />
+								</ResrtictedRoute>
+							}
+						/>
+						<Route
+							path="/signup"
+							element={
+								<ResrtictedRoute>
+									<Signup />
+								</ResrtictedRoute>
+							}
+						/>
+						<Route
+							path="/project"
+							element={
+								<ProtectedRoute>
+									<Project />
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="/create"
+							element={
+								<ProtectedRoute>
+									<Create />
+								</ProtectedRoute>
+							}
+						/>
 						<Route path="*" element={<Missing />} />
 					</Routes>
 				</div>
