@@ -1,0 +1,26 @@
+
+  
+  .loader {
+    display: flex;
+    align-self: center;
+    margin: auto;
+    height: 4rem;
+    width: 4rem;
+    margin-top: calc(50vh-2rem);
+    border-radius: 50%;
+    border: 10px solid rgb(208, 208, 208);
+    border-top-color: var(--primary-color);
+    box-sizing: border-box;
+    background: transparent;
+    animation: loading 1s linear infinite;
+  }
+  
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    0% {
+      transform: rotate(360deg);
+    }
+  }
+  

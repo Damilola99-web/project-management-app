@@ -13,12 +13,14 @@ import ProtectedRoute from './pages/ProtectedRoute';
 import { ResrtictedRoute } from './pages/RestrictedRoute';
 import { useAuthContext } from './hooks/useAuthContext';
 import UsersList from './components/UsersList';
+import Loading from './components/Loading';
 
 function App() {
-	const { user } = useAuthContext();
+	const { user, authIsReady } = useAuthContext();
 	return (
-		<div className="App">
-			<Router>
+		<div className={!user? 'App' : 'appp'}>
+			{!authIsReady && <Loading />}
+			{authIsReady && <Router>
 				{user && <Sidebar />}
 				<div className="container">
 					<Navbar />
@@ -48,7 +50,7 @@ function App() {
 							}
 						/>
 						<Route
-							path="/project"
+							path="/projects/:id"
 							element={
 								<ProtectedRoute>
 									<Project />
@@ -67,7 +69,7 @@ function App() {
 					</Routes>
 				</div>
 				{user && <UsersList />}
-			</Router>
+			</Router>}
 		</div>
 	);
 }
