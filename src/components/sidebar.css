@@ -17,6 +17,7 @@
     letter-spacing: 1px;
     padding: 40px 30px;
     border-bottom: 1px solid rgba(255,255,255,0.2);
+    text-transform: capitalize;
   }
   .sidebar .links {
     margin-top: 80px;
